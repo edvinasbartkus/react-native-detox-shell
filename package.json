@@ -7,9 +7,12 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build-detox-android": "detox build -c android.emu.release",
+    "test-detox-android": "detox test -c android.emu.release"
   },
   "dependencies": {
+    "detox": "^14.8.1",
     "react": "16.9.0",
     "react-native": "0.61.4"
   },
@@ -25,5 +28,21 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "detox": {
+    "configurations": {
+      "ios.sim.release": {
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/trippy.app",
+        "build": "xcodebuild -workspace ios/trippy.xcworkspace -scheme trippy -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "type": "ios.simulator",
+        "name": "iPhone 8"
+      },
+      "android.emu.release": {
+        "binaryPath": "android/app/build/outputs/apk/release/app-release.apk",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=release && cd ..",
+        "type": "android.emulator",
+        "name": "emu"
+      }
+    }
   }
 }
