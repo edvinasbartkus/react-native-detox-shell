@@ -32,8 +32,8 @@
   "detox": {
     "configurations": {
       "ios.sim.release": {
-        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/trippy.app",
-        "build": "xcodebuild -workspace ios/trippy.xcworkspace -scheme trippy -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath": "ios/build/Build/Products/Release-iphonesimulator/Shell.app",
+        "build": "xcodebuild -workspace ios/Shell.xcworkspace -scheme Shell -configuration Release -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 8"
       },
